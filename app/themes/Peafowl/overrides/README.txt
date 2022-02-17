@@ -1,0 +1,1 @@
+Check the theme overrides documentation here: https://chevereto-free.github.io/features/customization/theme.html#theme-overrides

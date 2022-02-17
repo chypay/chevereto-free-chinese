@@ -1,0 +1,1 @@
+Check the custom hooks documentation here: https://chevereto-free.github.io/features/customization/theme.html#custom-hooks

@@ -1,0 +1,42 @@
+ServerSignature Off
+Options -Indexes
+Options -MultiViews
+
+# Enable CORS across all your subdomains (replace dev\.local with your domain\.com)
+# SetEnvIf Origin ^(https?://.+\.dev\.local(?::\d{1,5})?)$   CORS_ALLOW_ORIGIN=$1
+# Header append Access-Control-Allow-Origin  %{CORS_ALLOW_ORIGIN}e   env=CORS_ALLOW_ORIGIN
+# Header merge  Vary "Origin"
+
+<FilesMatch "composer\.(json|lock)|importing\.php|\.htaccess|\.gitignore">
+	<IfModule !mod_authz_core.c>
+        Order Allow,Deny
+        Deny from all
+    </IfModule>
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule> 
+</FilesMatch>
+
+<IfModule mod_rewrite.c>
+	RewriteEngine On
+	# If you have problems with the rewrite rules remove the "#" from the following RewriteBase line
+	# You will also have to change the path to reflect the path to your Chevereto installation
+	# If you are using mod alias is likely that you will need this.
+	#RewriteBase /
+
+	# 404 images
+	# If you want to have your own fancy "image not found" image remove the # from RewriteRule
+	# Make sure to apply the correct paths to reflect your current installation
+	RewriteCond %{REQUEST_FILENAME} !-f
+	#RewriteRule images/.+\.(gif|jpe?g|a?png|bmp|webp) content/images/system/default/404.gif [NC,L]
+	RewriteRule images/.+\.(gif|jpe?g|png|bmp|webp) - [NC,L,R=404]
+
+	# PHP front controller
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteRule . index.php [L]
+
+    # Single PHP-entrypoint (disables direct access to .php files)
+    RewriteCond %{THE_REQUEST} ^.+?\ [^?]+\.php[?\ ] [NC]
+    RewriteRule \.php$ - [NC,L,F,R=404]
+</IfModule>

@@ -1,0 +1,1 @@
+<span class="empty icon icon-user2"></span>
