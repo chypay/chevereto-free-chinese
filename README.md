@@ -1,7 +1,7 @@
 # chevereto-free-chinese
 ![](https://raw.githubusercontent.com/rodber/chevereto-free/1.6/content/images/system/default/logo.svg)
 
-## English [👉中文说明](https://github.com/keven1024/chevereto-free-chinese/#%E4%B8%AD%E6%96%87)
+## English [👉中文说明](https://github.com/keven1024/chevereto-free-chinese/blob/main/README.md#%E4%B8%AD%E6%96%87)
 ### introduce
 Chevereto-Free-chinese is a fork from [Chevereto-free](https://github.com/rodber/chevereto-free) in which only basic features are preserved. Chevereto-Free is for personal usage and small communities.
 ### screenshot
